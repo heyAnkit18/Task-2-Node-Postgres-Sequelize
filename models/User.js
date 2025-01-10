@@ -14,7 +14,14 @@ const User=sequelize.define('User',{
         type:DataTypes.BIGINT,
         allowNull:false,
     },
-},{
+    Adress:{
+        type:DataTypes.STRING,
+        allowNull:false,
+    },
+    Employee_id:{
+        type:DataTypes.BIGINT,
+        allowNull:true,
+    },
     timestamps: true,
 });
 
