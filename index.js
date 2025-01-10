@@ -16,3 +16,12 @@ sequelize.authenticate()
   .then(() => console.log('Database connected successfully.'))
   .catch(err => console.error('Database connection failed:', err));
 
+
+  const User=require('./models/User');
+  sequelize.sync({force:true})
+  .then(()=>{
+    console.log("Database and table created")
+  })
+  .catch(err=>{
+    console.log("Error Syncing tables:",err)
+  })
