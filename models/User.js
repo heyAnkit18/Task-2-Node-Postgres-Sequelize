@@ -1,28 +1,30 @@
-const {DataTypes}=require('sequelize');
-const sequelize=require('../config/db');
+module.exports = (sequelize, DataTypes) => {
+    const User = sequelize.define('User', {
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: true,
+        },
+      },
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+        validate: {
+          isEmail: true,
+        },
+      },
+      age: {
+        type: DataTypes.INTEGER,
+        validate: {
+          isInt: true,
+          min: 0,
+        },
+      },
+    }, {
+      timestamps: true,
+    });
+    return User;
+  };
 
-const User=sequelize.define('User',{
-    username:{
-        type:DataTypes.STRING,
-        allowNull:false,
-    },
-    email:{
-        type:DataTypes.STRING,
-        allowNull:false,
-    },
-    Mobile:{
-        type:DataTypes.BIGINT,
-        allowNull:false,
-    },
-    Adress:{
-        type:DataTypes.STRING,
-        allowNull:false,
-    },
-    Employee_id:{
-        type:DataTypes.BIGINT,
-        allowNull:true,
-    },
-    timestamps: true,
-});
-
-module.exports=User;
